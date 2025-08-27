@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "939182791944",
+    "project_id": "daily-list-bab1b",
+    "storage_bucket": "daily-list-bab1b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:939182791944:android:8ca2ef5910c89886aea0bd",
+        "android_client_info": {
+          "package_name": "com.example.daily_list"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAF7Lk-FKKkwTP8uDhYfppb_UnPoco7zBY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
