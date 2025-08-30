@@ -1,11 +1,7 @@
 import 'package:daily_list/core/constants/app_assets.dart';
 import 'package:daily_list/core/extensions/gap_extension.dart';
-import 'package:daily_list/features/auth/presentation/screens/sign_in_screen.dart';
-import 'package:daily_list/features/onbording/presentation/screens/onbording_screen.dart';
-import 'package:daily_list/features/splash/presentation/cubit/splash_cubit.dart';
 import 'package:daily_list/features/splash/presentation/screens/pick_language_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'dart:math' as math;
 import 'dart:ui';
 import '../../../../core/constants/app_colors.dart';
@@ -103,7 +99,7 @@ class _SplashScreenState extends State<SplashScreen>
       _textController.forward().then((_) {
         Future.delayed(const Duration(seconds: 1), () {
           if (mounted) {
-            Navigator.push(
+            Navigator.pushReplacement(
               context,
               MaterialPageRoute(builder: (context) => PickLanguageScreen()),
             );
@@ -124,108 +120,97 @@ class _SplashScreenState extends State<SplashScreen>
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SplashCubit, SplashState>(
-      builder: (context, state) {
-        return state.when(
-          language: () => const PickLanguageScreen(),
-          loading: () => Scaffold(
-            body: AnimatedBuilder(
-              animation: _backgroundController,
-              builder: (context, child) {
-                return Container(
-                  decoration: BoxDecoration(
-                    gradient: RadialGradient(
-                      center: Alignment.topLeft,
-                      radius: 2,
-                      colors: [
-                        Color.lerp(
-                          AppColors.primary400,
-                          AppColors.natural100,
-                          _backgroundController.value,
-                        )!,
-                        Color.lerp(
-                          AppColors.natural100,
-                          AppColors.lightSkyBlue200,
-                          _backgroundController.value,
-                        )!,
-                      ],
-                      stops: const [0.5, 1],
+    return Scaffold(
+      body: AnimatedBuilder(
+        animation: _backgroundController,
+        builder: (context, child) {
+          return Container(
+            decoration: BoxDecoration(
+              gradient: RadialGradient(
+                center: Alignment.topLeft,
+                radius: 2,
+                colors: [
+                  Color.lerp(
+                    AppColors.primary400,
+                    AppColors.natural100,
+                    _backgroundController.value,
+                  )!,
+                  Color.lerp(
+                    AppColors.natural100,
+                    AppColors.lightSkyBlue200,
+                    _backgroundController.value,
+                  )!,
+                ],
+                stops: const [0.5, 1],
+              ),
+            ),
+            child: Stack(
+              children: [
+                ...List.generate(12, (index) => _buildParticle(index)),
+                BackdropFilter(
+                  filter: ImageFilter.blur(sigmaX: 0.5, sigmaY: 0.5),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white.withValues(alpha: 0.1),
                     ),
                   ),
-                  child: Stack(
+                ),
+                Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      ...List.generate(12, (index) => _buildParticle(index)),
-                      BackdropFilter(
-                        filter: ImageFilter.blur(sigmaX: 0.5, sigmaY: 0.5),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: Colors.white.withValues(alpha: 0.1),
-                          ),
-                        ),
-                      ),
-                      Center(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            AnimatedBuilder(
-                              animation: _logoController,
-                              builder: (context, child) {
-                                return SlideTransition(
-                                  position: _logoSlide,
-                                  child: Transform.rotate(
-                                    angle: _logoRotation.value * math.pi,
-                                    child: Transform.scale(
-                                      scale: _logoScale.value,
-                                      child: Image.asset(
-                                        AppAssets.logo,
-                                        width: 84,
-                                        height: 82,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  ),
-                                );
-                              },
+                      AnimatedBuilder(
+                        animation: _logoController,
+                        builder: (context, child) {
+                          return SlideTransition(
+                            position: _logoSlide,
+                            child: Transform.rotate(
+                              angle: _logoRotation.value * math.pi,
+                              child: Transform.scale(
+                                scale: _logoScale.value,
+                                child: Image.asset(
+                                  AppAssets.logo,
+                                  width: 84,
+                                  height: 82,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
                             ),
-                            24.g,
-                            AnimatedBuilder(
-                              animation: _textController,
-                              builder: (context, child) {
-                                return SlideTransition(
-                                  position: _textSlide,
-                                  child: Transform.scale(
-                                    scale: _textScale.value,
-                                    child: FadeTransition(
-                                      opacity: _textOpacity,
-                                      child: AppText(
-                                        text: 'Daily List',
-                                        fontSize: 28,
-                                        fontWeight: 700,
-                                        color: Colors.white.withValues(
-                                          alpha: 0.95,
-                                        ),
-                                        letterSpacing: 1.2,
-                                      ),
-                                    ),
-                                  ),
-                                );
-                              },
-                            ),
-                            24.g,
-                          ],
-                        ),
+                          );
+                        },
                       ),
+                      24.g,
+                      AnimatedBuilder(
+                        animation: _textController,
+                        builder: (context, child) {
+                          return SlideTransition(
+                            position: _textSlide,
+                            child: Transform.scale(
+                              scale: _textScale.value,
+                              child: FadeTransition(
+                                opacity: _textOpacity,
+                                child: AppText(
+                                  isLocalizedKey: false,
+                                  text: 'Daily List',
+                                  fontSize: 28,
+                                  fontWeight: 700,
+                                  color: Colors.white.withValues(alpha: 0.95),
+                                  letterSpacing: 1.2,
+                                ),
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                      24.g,
                     ],
                   ),
-                );
-              },
+                ),
+              ],
             ),
-          ),
-          onbording: () => const OnboardingScreen(),
-          auth: () => const SignInScreen(),
-          main: () => const SizedBox(),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 

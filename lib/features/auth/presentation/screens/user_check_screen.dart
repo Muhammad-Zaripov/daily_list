@@ -1,20 +1,22 @@
 import 'package:daily_list/core/constants/app_assets.dart';
 import 'package:daily_list/core/constants/app_colors.dart';
 import 'package:daily_list/core/extensions/gap_extension.dart';
+import 'package:daily_list/features/auth/presentation/cubit/auth_cubit/auth_cubit.dart';
+import 'package:daily_list/features/auth/presentation/screens/register_screen.dart';
 import 'package:daily_list/shader/widgets/app_padding_widget.dart';
 import 'package:daily_list/shader/widgets/app_text.dart';
 import 'package:flutter/material.dart';
-
-import '../../../../shader/widgets/animated_circular_progress.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../shader/widgets/app_primary_button.dart';
-import '../widgets/custom_text_field.dart';
+import '../../../../shader/widgets/custom_text_field.dart';
 
-class SignInScreen extends StatelessWidget {
-  const SignInScreen({super.key});
+class UserCheckScreen extends StatelessWidget {
+  const UserCheckScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     final mailController = TextEditingController();
+    // final passwordController = TextEditingController();
     return Scaffold(
       backgroundColor: AppColors.natural100,
       body: AppPaddingWidget(
@@ -34,7 +36,12 @@ class SignInScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 AppText(text: 'hey_there', fontSize: 28, fontWeight: 600),
-                AppText(text: '👋🏻', fontSize: 28, fontWeight: 600),
+                AppText(
+                  isLocalizedKey: false,
+                  text: '👋🏻',
+                  fontSize: 28,
+                  fontWeight: 600,
+                ),
               ],
             ),
             8.g,
@@ -56,6 +63,7 @@ class SignInScreen extends StatelessWidget {
                   fontSize: 12,
                 ),
                 AppText(
+                  isLocalizedKey: false,
                   text: ' dailylist@email.com',
                   color: AppColors.secondary,
                   fontSize: 12,
@@ -68,7 +76,12 @@ class SignInScreen extends StatelessWidget {
               builder: (context, value, _) {
                 final isNotEmpty = value.text.trim().isNotEmpty;
                 return AppPrimaryButton(
-                  onTap: () {},
+                  onTap: () {
+                    // context.read<AuthCubit>().login(
+                    //   email: mailController.text,
+                    //   password: passwordController.text,
+                    // );
+                  },
                   color: isNotEmpty
                       ? AppColors.primary400
                       : AppColors.natural300,
@@ -79,7 +92,27 @@ class SignInScreen extends StatelessWidget {
                 );
               },
             ),
-            AnimatedCircularProgress(size: 30, strokeWidth: 2, dotSize: 5),
+            20.g,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              spacing: 4,
+              children: [
+                AppText(text: 'no_account', color: AppColors.secondary),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => RegisterScreen()),
+                    );
+                  },
+                  child: AppText(
+                    text: 'sign_up_now',
+                    fontWeight: 600,
+                    color: AppColors.primary400,
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
       ),

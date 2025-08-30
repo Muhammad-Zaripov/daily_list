@@ -1,20 +1,32 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../core/constants/app_colors.dart';
+import '../../core/constants/app_colors.dart';
 
 class CustomTextField extends StatelessWidget {
+  final int? minLines;
+  final int? maxLines;
+  final bool? obscureText;
   final String hint;
   final TextEditingController controller;
   const CustomTextField({
     super.key,
     required this.hint,
     required this.controller,
+    this.obscureText,
+    this.minLines,
+    this.maxLines,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      keyboardType: TextInputType.multiline,
+      textInputAction: TextInputAction.newline,
+      minLines: minLines,
+      maxLines: maxLines,
+
+      obscureText: obscureText ?? false,
       controller: controller,
       onTapOutside: (event) {
         FocusScope.of(context).unfocus();

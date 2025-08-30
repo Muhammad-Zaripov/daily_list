@@ -73,11 +73,11 @@ class _PickLanguageScreenState extends State<PickLanguageScreen> {
               onTap: () {
                 if (selected.isNotEmpty) {
                   context.setLocale(Locale(selected));
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => OnboardingScreen()),
+                  );
                 }
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => OnboardingScreen()),
-                );
               },
               color: selected.isNotEmpty
                   ? AppColors.primary400

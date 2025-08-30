@@ -65,4 +65,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'daily-list-bab1b.firebasestorage.app',
     iosBundleId: 'com.example.dailyList',
   );
+
 }

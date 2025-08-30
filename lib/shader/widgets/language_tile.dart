@@ -38,6 +38,7 @@ class LanguageTile extends StatelessWidget {
             12.g,
             Expanded(
               child: AppText(
+                isLocalizedKey: false,
                 text: language.name,
                 fontSize: 16,
                 color: AppColors.primary,

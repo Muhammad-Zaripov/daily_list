@@ -1,3 +1,4 @@
+import 'package:daily_list/core/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 
@@ -46,7 +47,7 @@ class AppText extends StatelessWidget {
           TextStyle(
             fontSize: fontSize,
             fontWeight: fw,
-            color: color,
+            color: color ?? AppColors.primary,
             fontFamily: AppFonts.getFontFamily(fontWeight),
             letterSpacing: letterSpacing,
             overflow: TextOverflow.ellipsis,

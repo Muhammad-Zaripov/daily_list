@@ -1,0 +1,24 @@
+import 'package:flutter/material.dart';
+
+import '../../core/constants/app_colors.dart';
+
+class CustomBody extends StatelessWidget {
+  final Widget child;
+  const CustomBody({super.key, required this.child});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      decoration: BoxDecoration(
+        color: AppColors.natural100,
+        border: Border.all(width: 1, color: AppColors.natural400),
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(20),
+          topRight: Radius.circular(20),
+        ),
+      ),
+      child: child,
+    );
+  }
+}
