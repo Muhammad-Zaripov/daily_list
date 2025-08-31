@@ -5,7 +5,9 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../../../core/di/di.dart';
 import '../../../add/presentation/screens/add_screen.dart';
+import '../../../calendar/presentation/screens/calendar_screen.dart';
 import '../../../home/presentation/screens/home_screen.dart';
 import '../../../note/presentation/screens/note_screen.dart';
 import '../../../profile/presentation/screens/profile_screen.dart';
@@ -66,7 +68,7 @@ class _MainScreenState extends State<MainScreen> {
           NoteScreen(),
           // AddScreen(),
           SizedBox(),
-          Center(child: Text("Calendar")),
+          CustomUzbekCalendar(calendarService: getIt<CalendarService>()),
           ProfileScreen(),
         ],
       ),
