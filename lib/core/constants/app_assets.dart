@@ -9,15 +9,24 @@ class AppAssets {
   static const String calendar = "${_baseIcon}calendar.svg";
   static const String home = "${_baseIcon}home.svg";
   static const String note = "${_baseIcon}note.svg";
+  static const String right = "${_baseIcon}right.svg";
+  static const String infoLanguageOutline =
+      "${_baseIcon}info-language-outline.svg";
+  static const String infoSignOuOutline =
+      "${_baseIcon}info-sign-out-outline.svg";
   static const String profile = "${_baseIcon}profile.svg";
+  static const String actionEditOutline = "${_baseIcon}action-edit-outline.svg";
+  static const String defoultProfile = "${_baseIcon}defoult-profile.svg";
   static const String calendarSelect = "${_baseIcon}calendar_select.svg";
   static const String homeSelect = "${_baseIcon}home_select.svg";
   static const String noteSelect = "${_baseIcon}note_select.svg";
   static const String profileSelect = "${_baseIcon}profile_select.svg";
-  static const String actionOptionOutline = "${_baseIcon}action-option-outline.svg";
+  static const String actionOptionOutline =
+      "${_baseIcon}action-option-outline.svg";
   static const String filter = "${_baseIcon}filter.svg";
   static const String checkbox = "${_baseIcon}checkbox.svg";
-  static const String actionTrashOutline = "${_baseIcon}action-trash-outline.svg";
+  static const String actionTrashOutline =
+      "${_baseIcon}action-trash-outline.svg";
   static const String actionArrowLeftOutline =
       "${_baseIcon}action-arrow_left-outline.svg";
   static const String infoTimerOutline = "${_baseIcon}info-timer-outline.svg";

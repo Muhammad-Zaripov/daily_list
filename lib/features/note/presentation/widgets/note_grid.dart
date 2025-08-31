@@ -6,19 +6,23 @@ class NoteGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: GridView.builder(
-        padding: EdgeInsets.zero,
-        itemCount: 10,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          mainAxisSpacing: 20,
-          crossAxisSpacing: 20,
-        ),
-        itemBuilder: (context, index) {
-          return NoteWidget();
-        },
+    return GridView.builder(
+      padding: EdgeInsets.zero,
+      itemCount: 10,
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        mainAxisSpacing: 20,
+        crossAxisSpacing: 20,
+        childAspectRatio: 16 / 18,
       ),
+      itemBuilder: (context, index) {
+        return NoteWidget(
+          title: 'User research $index',
+          description:
+              'Objective: To identify the characteristics, needs, and behaviors of the primary application users $index',
+          date: 'today',
+        );
+      },
     );
   }
 }

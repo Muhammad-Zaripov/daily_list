@@ -1,5 +1,5 @@
-import 'package:daily_list/core/extensions/media_query_values_extension.dart';
 import 'package:daily_list/features/note/data/model/layout_model.dart';
+import 'package:daily_list/features/note/data/model/note_view_type.dart';
 import 'package:daily_list/shader/widgets/custom_body.dart';
 import 'package:flutter/material.dart';
 
@@ -17,9 +17,10 @@ class NoteSettingsScreen extends StatefulWidget {
 class _NoteSettingsScreenState extends State<NoteSettingsScreen> {
   String selected = "";
   List<LayoutModel> list = [
-    LayoutModel(title: 'list_card', layout: 'card'),
+    LayoutModel(title: 'list_card', layout: 'grid'),
     LayoutModel(title: 'list_view', layout: 'list'),
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,12 +28,12 @@ class _NoteSettingsScreenState extends State<NoteSettingsScreen> {
       appBar: AppBar(
         leading: GestureDetector(
           onTap: () {
-            Navigator.pop(context);
+            Navigator.pop(context, _mapLayoutToViewType(selected));
           },
-          child: Icon(Icons.arrow_back_sharp),
+          child: const Icon(Icons.arrow_back_sharp),
         ),
         centerTitle: true,
-        title: AppText(text: 'note_setting'),
+        title: const AppText(text: 'note_setting'),
         backgroundColor: AppColors.natural200,
       ),
       body: CustomBody(
@@ -41,9 +42,8 @@ class _NoteSettingsScreenState extends State<NoteSettingsScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              AppText(text: 'layout', fontSize: 16, fontWeight: 600),
-              SizedBox(
-                height: context.h(0.4),
+              const AppText(text: 'layout', fontSize: 16, fontWeight: 600),
+              Expanded(
                 child: ListView.builder(
                   itemCount: list.length,
                   itemBuilder: (context, index) {
@@ -65,5 +65,9 @@ class _NoteSettingsScreenState extends State<NoteSettingsScreen> {
         ),
       ),
     );
+  }
+
+  NoteViewType _mapLayoutToViewType(String layout) {
+    return layout == "list" ? NoteViewType.list : NoteViewType.grid;
   }
 }

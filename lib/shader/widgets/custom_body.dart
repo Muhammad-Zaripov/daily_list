@@ -12,7 +12,7 @@ class CustomBody extends StatelessWidget {
       width: double.infinity,
       decoration: BoxDecoration(
         color: AppColors.natural100,
-        border: Border.all(width: 1, color: AppColors.natural400),
+        border: Border(top: BorderSide(width: 1, color: AppColors.natural400)),
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(20),
           topRight: Radius.circular(20),

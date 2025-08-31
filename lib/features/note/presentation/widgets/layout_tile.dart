@@ -21,6 +21,7 @@ class LayoutTile extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         onChanged(item.layout);
+        Navigator.pop(context);
       },
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 12),

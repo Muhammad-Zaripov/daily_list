@@ -5,9 +5,18 @@ import 'package:daily_list/shader/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import '../widgets/note_grid.dart';
 import '../widgets/note_header.dart';
+import '../../data/model/note_view_type.dart';
+import '../widgets/note_list.dart';
 
-class NoteScreen extends StatelessWidget {
+class NoteScreen extends StatefulWidget {
   const NoteScreen({super.key});
+
+  @override
+  State<NoteScreen> createState() => _NoteScreenState();
+}
+
+class _NoteScreenState extends State<NoteScreen> {
+  NoteViewType _viewType = NoteViewType.grid;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +27,13 @@ class NoteScreen extends StatelessWidget {
         top: 70,
         child: Column(
           children: [
-            NoteHeader(),
+            NoteHeader(
+              onViewTypeChanged: (type) {
+                setState(() {
+                  _viewType = type;
+                });
+              },
+            ),
             24.g,
             CustomTextField(
               hint: 'search_note',
@@ -26,8 +41,11 @@ class NoteScreen extends StatelessWidget {
               maxLines: 1,
             ),
             24.g,
-
-            NoteGrid(),
+            Expanded(
+              child: _viewType == NoteViewType.grid
+                  ? const NoteGrid()
+                  : const NoteList(),
+            ),
           ],
         ),
       ),

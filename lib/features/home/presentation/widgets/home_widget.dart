@@ -22,7 +22,11 @@ class _HomeWidgetState extends State<HomeWidget> {
       onLongPress: () {
         showAdaptiveDialog(
           context: context,
-          builder: (context) => DeleteDialog(),
+          builder: (context) => DeleteDialog(
+            title: 'confirm_delete',
+            description: 'delete_message_warning',
+            onTap: () {},
+          ),
         );
       },
       child: AppPaddingWidget(
@@ -106,7 +110,6 @@ class _HomeWidgetState extends State<HomeWidget> {
                           spacing: 4,
                           children: [
                             AppText(text: '11:00', isLocalizedKey: false),
-                            SvgPicture.asset(AppAssets.notificationOutline),
                           ],
                         ),
                         8.g,

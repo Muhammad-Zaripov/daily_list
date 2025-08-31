@@ -6,7 +6,15 @@ import 'package:daily_list/shader/widgets/app_text.dart';
 import 'package:flutter/material.dart';
 
 class DeleteDialog extends StatelessWidget {
-  const DeleteDialog({super.key});
+  final String title;
+  final String description;
+  final VoidCallback onTap;
+  const DeleteDialog({
+    super.key,
+    required this.title,
+    required this.description,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +34,7 @@ class DeleteDialog extends StatelessWidget {
             Image.asset(AppAssets.delete),
             16.g,
             AppText(
-              text: 'confirm_delete',
+              text: title,
               fontSize: 20,
               fontWeight: 600,
               softWrap: true,
@@ -35,14 +43,14 @@ class DeleteDialog extends StatelessWidget {
             ),
             4.g,
             AppText(
-              text: 'delete_message_warning',
+              text: description,
               maxLines: 2,
               textAlign: TextAlign.center,
               softWrap: true,
               color: AppColors.secondary,
             ),
             16.g,
-            AppPrimaryButton(onTap: () {}, title: 'yes_delete'),
+            AppPrimaryButton(onTap: onTap, title: 'yes'),
             12.g,
             AppPrimaryButton(
               onTap: () {

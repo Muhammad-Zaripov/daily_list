@@ -154,7 +154,7 @@ class _AddScreenState extends State<AddScreen> {
                 ),
               ),
               AppPrimaryButton(onTap: () {}, title: 'save_new_task'),
-              20.g,
+              40.g,
             ],
           ),
         ),

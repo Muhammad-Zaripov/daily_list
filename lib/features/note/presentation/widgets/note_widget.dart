@@ -6,7 +6,16 @@ import '../../../../shader/widgets/app_text.dart';
 import '../../../../shader/widgets/delete_dialog.dart';
 
 class NoteWidget extends StatelessWidget {
-  const NoteWidget({super.key});
+  final String title;
+  final String description;
+  final String date;
+
+  const NoteWidget({
+    super.key,
+    required this.title,
+    required this.description,
+    required this.date,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +23,11 @@ class NoteWidget extends StatelessWidget {
       onLongPress: () {
         showAdaptiveDialog(
           context: context,
-          builder: (context) => DeleteDialog(),
+          builder: (context) => DeleteDialog(
+            title: 'confirm_delete',
+            description: 'delete_message_warning',
+            onTap: () {},
+          ),
         );
       },
       child: Container(
@@ -25,25 +38,25 @@ class NoteWidget extends StatelessWidget {
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
           children: [
             AppText(
-              text: 'User research',
+              text: title,
               isLocalizedKey: false,
               fontSize: 16,
               fontWeight: 600,
             ),
             8.g,
             AppText(
-              text:
-                  'Objective: To identify the characteristics, needs, and behaviors of the primary application users',
+              text: description,
               isLocalizedKey: false,
-              maxLines: 4,
+              maxLines: 5,
               softWrap: true,
               textAlign: TextAlign.start,
               color: AppColors.secondary,
             ),
             Spacer(),
-            AppText(text: 'today', fontSize: 12, color: AppColors.secondary),
+            AppText(text: date, fontSize: 12, color: AppColors.secondary),
           ],
         ),
       ),

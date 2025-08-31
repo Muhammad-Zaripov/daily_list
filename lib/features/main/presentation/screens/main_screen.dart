@@ -8,6 +8,7 @@ import 'package:flutter_svg/svg.dart';
 import '../../../add/presentation/screens/add_screen.dart';
 import '../../../home/presentation/screens/home_screen.dart';
 import '../../../note/presentation/screens/note_screen.dart';
+import '../../../profile/presentation/screens/profile_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -57,7 +58,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: AppColors.natural100,
+      backgroundColor: AppColors.natural100,
       body: IndexedStack(
         index: currentPage,
         children: [
@@ -66,7 +67,7 @@ class _MainScreenState extends State<MainScreen> {
           // AddScreen(),
           SizedBox(),
           Center(child: Text("Calendar")),
-          Center(child: Text("Profile")),
+          ProfileScreen(),
         ],
       ),
       bottomNavigationBar: Container(
