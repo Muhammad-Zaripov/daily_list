@@ -10,7 +10,7 @@ class NoteList extends StatelessWidget {
       padding: EdgeInsets.zero,
       itemCount: 10,
       itemBuilder: (context, index) => Padding(
-        padding: const EdgeInsets.only(bottom: 12),
+        padding: const EdgeInsets.only(bottom: 20),
         child: NoteWidget(
           title: 'User research $index',
           description:

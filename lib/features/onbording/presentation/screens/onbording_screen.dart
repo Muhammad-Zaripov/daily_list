@@ -1,8 +1,7 @@
 import 'package:daily_list/core/constants/app_assets.dart';
 import 'package:daily_list/core/constants/app_colors.dart';
 import 'package:daily_list/core/extensions/gap_extension.dart';
-import 'package:daily_list/features/auth/presentation/screens/user_check_screen.dart';
-import 'package:daily_list/features/main/presentation/screens/main_screen.dart';
+import 'package:daily_list/features/auth/presentation/screens/login_screen.dart.dart';
 import 'package:daily_list/shader/widgets/app_padding_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -62,7 +61,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 onTap: () {
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => MainScreen()),
+                    MaterialPageRoute(builder: (context) => LoginScreen()),
                   );
                 },
                 child: Row(
@@ -113,9 +112,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     if (currentPage == pages.length - 1) {
                       Navigator.pushReplacement(
                         context,
-                        MaterialPageRoute(
-                          builder: (context) => UserCheckScreen(),
-                        ),
+                        MaterialPageRoute(builder: (context) => LoginScreen()),
                       );
                     } else {
                       _controller.nextPage(

@@ -16,25 +16,20 @@ class NoteHeader extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         AppText(text: 'note', fontSize: 20, fontWeight: 600),
-        Row(
-          children: [
-            SvgPicture.asset(AppAssets.actionTrashOutline),
-            GestureDetector(
-              onTap: () async {
-                final result = await Navigator.push<NoteViewType>(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const NoteSettingsScreen(),
-                  ),
-                );
+        GestureDetector(
+          onTap: () async {
+            final result = await Navigator.push<NoteViewType>(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const NoteSettingsScreen(),
+              ),
+            );
 
-                if (result != null) {
-                  onViewTypeChanged(result);
-                }
-              },
-              child: SvgPicture.asset(AppAssets.actionOptionOutline),
-            ),
-          ],
+            if (result != null) {
+              onViewTypeChanged(result);
+            }
+          },
+          child: SvgPicture.asset(AppAssets.actionOptionOutline),
         ),
       ],
     );

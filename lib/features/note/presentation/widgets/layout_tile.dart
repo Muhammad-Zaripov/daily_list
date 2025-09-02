@@ -1,6 +1,5 @@
 import 'package:daily_list/features/note/data/model/layout_model.dart';
 import 'package:flutter/material.dart';
-
 import '../../../../core/constants/app_colors.dart';
 import '../../../../shader/widgets/app_text.dart';
 
@@ -21,7 +20,6 @@ class LayoutTile extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         onChanged(item.layout);
-        Navigator.pop(context);
       },
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 12),

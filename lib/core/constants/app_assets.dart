@@ -4,12 +4,13 @@ class AppAssets {
   static const String _baseIcon = "assets/icons/";
 
   ///icons
-
   static const String arrowRight = "${_baseIcon}arrow_right.svg";
   static const String calendar = "${_baseIcon}calendar.svg";
   static const String home = "${_baseIcon}home.svg";
   static const String note = "${_baseIcon}note.svg";
   static const String right = "${_baseIcon}right.svg";
+  static const String left = "${_baseIcon}left.svg";
+  // static const String noTask = "${_baseIcon}no-task.svg";
   static const String infoLanguageOutline =
       "${_baseIcon}info-language-outline.svg";
   static const String infoSignOuOutline =
@@ -38,6 +39,7 @@ class AppAssets {
 
   ///images
   static const String logo = "${_baseImage}logo.png";
+  static const String noTask = "${_baseImage}no-task.png";
   static const String onbording1 = "${_baseImage}onbording1.png";
   static const String onbording2 = "${_baseImage}onbording2.png";
   static const String onbording3 = "${_baseImage}onbording3.png";

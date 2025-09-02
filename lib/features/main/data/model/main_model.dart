@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class MainModel {
   final int index;
   final String? icon;

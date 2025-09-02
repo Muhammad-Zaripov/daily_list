@@ -55,7 +55,7 @@ class NoteWidget extends StatelessWidget {
               textAlign: TextAlign.start,
               color: AppColors.secondary,
             ),
-            Spacer(),
+            20.g,
             AppText(text: date, fontSize: 12, color: AppColors.secondary),
           ],
         ),
