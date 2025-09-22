@@ -36,9 +36,7 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   void initState() {
     super.initState();
-    // Future.delayed(const Duration(seconds: 5), () {
-    //   context.read<AuthBloc>().add(const AuthEvent.checkAuthStatus());
-    // });
+
     _backgroundController = AnimationController(
       duration: const Duration(seconds: 5),
       vsync: this,

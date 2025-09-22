@@ -1,7 +1,10 @@
 import 'package:daily_list/core/constants/app_assets.dart';
+import 'package:daily_list/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:daily_list/features/auth/presentation/bloc/auth_event.dart';
 import 'package:daily_list/features/profile/data/models/account_model.dart';
 import 'package:daily_list/features/profile/presentation/widgets/account_items.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../shader/widgets/app_text.dart';
 import '../../../../shader/widgets/custom_body.dart';
@@ -33,7 +36,9 @@ class AccountWidget extends StatelessWidget {
             builder: (context) => DeleteDialog(
               title: 'logout_title',
               description: 'logout_subtitle',
-              onTap: () {},
+              onTap: () {
+                context.read<AuthBloc>().add(AuthEvent.logout());
+              },
             ),
           );
         },

@@ -1,7 +1,6 @@
 import 'package:daily_list/core/constants/app_assets.dart';
 import 'package:daily_list/core/extensions/gap_extension.dart';
 import 'package:daily_list/features/profile/presentation/widgets/profile_container_widget.dart';
-import 'package:daily_list/shader/widgets/app_primary_button.dart';
 import 'package:daily_list/shader/widgets/app_text.dart';
 import 'package:daily_list/shader/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
@@ -70,7 +69,22 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 maxLines: 1,
               ),
               Spacer(),
-              AppPrimaryButton(onTap: () {}, title: 'update'),
+
+              // AppPrimaryButton(
+              //   onTap: () {
+              //     final authState = context.read<AuthBloc>().state;
+              //     if (authState is Authenticated) {
+              //       context.read<AuthBloc>().add(
+              //         AuthEvent.updateUser(
+              //           uid: authState.user.uid,
+              //           name: nameController.text.trim(),
+              //           email: emailController.text.trim(),
+              //         ),
+              //       );
+              //     }
+              //   },
+              //   title: 'update',
+              // ),
               20.g,
             ],
           ),

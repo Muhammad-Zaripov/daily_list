@@ -141,12 +141,22 @@ class _HomeWidgetState extends State<HomeWidget> {
                     top: 10,
                     left: -6,
                     child: Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 6,
+                      ),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: AppColors.danger200,
                       ),
                       width: 100,
                       height: 30,
+                      child: Center(
+                        child: AppText(
+                          text: 'low',
+                          color: AppColors.natural100,
+                        ),
+                      ),
                     ),
                   ),
                 ],

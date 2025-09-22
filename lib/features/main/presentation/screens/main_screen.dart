@@ -29,14 +29,12 @@ class _MainScreenState extends State<MainScreen> {
     navItems = [
       MainModel(
         index: 0,
-
         title: "home",
         icon: AppAssets.home,
         selectIcon: AppAssets.homeSelect,
       ),
       MainModel(
         index: 1,
-
         title: "note",
         icon: AppAssets.note,
         selectIcon: AppAssets.noteSelect,
@@ -66,7 +64,7 @@ class _MainScreenState extends State<MainScreen> {
         children: [
           HomeScreen(),
           NoteScreen(),
-          SizedBox(),
+          AddScreen(),
           CalendarPage(calendarService: getIt<CalendarService>()),
           ProfileScreen(),
         ],
@@ -149,9 +147,6 @@ class _MainScreenState extends State<MainScreen> {
               bottom: -5,
               child: GestureDetector(
                 onTap: () {
-                  // setState(() {
-                  //   currentPage = 2;
-                  // });
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => AddScreen()),

@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
-
 import '../../domain/repositories/auth_repository.dart';
 import '../models/user_model.dart';
 
@@ -45,15 +44,36 @@ class AuthRepositoryImpl implements AuthRepository {
       password: password,
     );
     final user = credential.user!;
-    await user.updateDisplayName(name ?? "User");
+    await user.updateDisplayName(name ?? "user");
     final userModel = UserModel(
       uid: user.uid,
       email: user.email ?? '',
-      name: name ?? "User",
+      name: name ?? "user",
     );
     await _firestore.collection('users').doc(user.uid).set(userModel.toJson());
     return userModel;
   }
+
+  // @override
+  // Future<UserModel> updateUser({
+  //   required String uid,
+  //   required String name,
+  //   required String email,
+  // }) async {
+  //   await _firestore.collection('users').doc(uid).update({
+  //     'name': name,
+  //     'email': email,
+  //   });
+
+  //   final user = _auth.currentUser;
+  //   if (user != null) {
+  //     await user.verifyBeforeUpdateEmail(email);
+  //     await user.updateDisplayName(name);
+  //   }
+
+  //   final snapshot = await _firestore.collection('users').doc(uid).get();
+  //   return UserModel.fromJson(snapshot.data()!);
+  // }
 
   @override
   Future<void> logout() async {

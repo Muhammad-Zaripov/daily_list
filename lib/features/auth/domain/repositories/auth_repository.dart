@@ -8,6 +8,11 @@ abstract class AuthRepository {
     required String password,
     String? name,
   });
+  // Future<UserModel> updateUser({
+  //   required String uid,
+  //   required String email,
+  //   required String name,
+  // });
 
   Future<void> logout();
 }
